@@ -8,7 +8,7 @@ class TopController < ApplicationController
     user = User.find_by(email: params[:email])
     
     if user != nil and user.authenticate(params[:password])
-      session[:login_uid] = params[:uid]
+      session[:login_uid] = params[:email]
       redirect_to top_main_path #FIXIT: redirect先を設定！！！！
     else
       render "error", status: 442
