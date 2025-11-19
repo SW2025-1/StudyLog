@@ -9,7 +9,7 @@ class TopController < ApplicationController
     
     if user != nil and user.authenticate(params[:password])
       session[:login_uid] = params[:uid]
-      # redirect_to #FIXIT: redirect先を設定！！！！
+      redirect_to top_main_path #FIXIT: redirect先を設定！！！！
     else
       render "error", status: 442
     end
@@ -17,6 +17,6 @@ class TopController < ApplicationController
   
   def logout
     session.delete(:login_uid)
-    # redirect_to #FIXIT: redirect先を設定！！！！
+    redirect_to top_main_path #FIXIT: redirect先を設定！！！！
   end
 end
