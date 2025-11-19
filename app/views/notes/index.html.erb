@@ -1,0 +1,6 @@
+<h1>マイページ</h1>
+<h2>ノート一覧表示</h2>
+<% @notes.each do |t| %>
+  <h3><%= t.title %></h3>
+  <p><%= t.content %></p>
+<% end %>
