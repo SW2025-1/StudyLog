@@ -1,0 +1,28 @@
+class UserController < ApplicationController
+  def index
+    @users = User.all
+  end
+  
+  def new
+    @user = User.new
+  end
+  
+  def create
+    u = User.new(email: params[:user][:email],
+      password: params[:user][:password],
+      password_confirmation: params[:user][:password_confirmation])
+    if User.find_by(email: params[:user][:email]) != nil
+      flash[:notice] = "※このメールアドレスは登録済みです"
+      redirect_to top_main_path #FIXIT: redirect先の設定！！
+    else
+      u.save
+      redirect_to top_main_path #FIXIT:redirect先の設定！！
+    end
+  end
+  
+  def destroy
+    @user = User.find(params[:id]).destroy
+    redirect_to top_main_path #FIXIT:redirect先の設定！！
+  end
+
+end
