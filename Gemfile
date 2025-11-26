@@ -61,3 +61,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# マークダウン形式のテキストをHTMｌ形式に変換するためのgem
+gem 'redcarpet'
