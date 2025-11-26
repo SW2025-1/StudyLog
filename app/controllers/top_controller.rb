@@ -8,6 +8,7 @@ class TopController < ApplicationController
       session[:login_uid] = params[:email]
       redirect_to top_main_path
     else
+      flash.now[:alert] = "*メールアドレスまたはパスワードが間違っています*"
       render :login_form, status: :unprocessable_entity
     end
   end
