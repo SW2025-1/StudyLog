@@ -7,9 +7,9 @@
   </p>
   <p>
       <%= f.label :content, '本文：' %>
-      <%= f.text_field :content %>
+      <%= f.text_area :content %>
   </p>
   
   <%= f.submit '保存' %>
 <% end %>
-<%= link_to 'キャンセル', '/' %>
+<%= link_to 'キャンセル', note_path %>

@@ -1,13 +1,10 @@
-<h1>ノート詳細表示</h1>
-
-<p>
+<h1>
   <strong>タイトル：</strong>
   <%= @note.title %>
-</p>
+</h1>
 
-<p>
-  <strong>ノート：</strong><br>
-  <%= @note.content %>
-</p>
+<div>
+  <%= markdown(@note.content) %>
+</div>
 
 <%= link_to '戻る', '/' %>
