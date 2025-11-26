@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     else
       u.save
-      redirect_to notes_path
+      redirect_to login_form_path
     end
   end
   
