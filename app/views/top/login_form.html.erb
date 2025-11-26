@@ -1,6 +1,6 @@
 <h1>ログイン</h1>
 
-<%= form_with url: , method: :post, local: true do |f| %> <!-- FIXIT: urlのパスを設定 -->
+<%= form_with url: login_path , method: :post, local: true do |f| %>
   <%= f.label :email, 'メールアドレス' %>
   <%= f.text_field :email %>
   <%= f.label :password, 'パスワード' %>
@@ -8,5 +8,5 @@
   <%= f.submit 'ログイン' %>
 <% end %>
 <br>
-<%= link_to "アカウント登録" %>
-<%= link_to "キャンセル" %>
+<%= link_to "アカウント登録", new_user_path %>
+<%= link_to "キャンセル", top_main_path %>
