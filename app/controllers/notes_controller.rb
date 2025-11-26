@@ -19,4 +19,8 @@ class NotesController < ApplicationController
     redirect_to '/'
   end
   
+  def show
+    @note = Note.find(params[:id])
+  end
+  
 end

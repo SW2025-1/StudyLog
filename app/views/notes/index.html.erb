@@ -7,6 +7,7 @@
             <strong><%= t.title %></strong>&nbsp;
             (作成日：<%= t.created_at %>)
             <%= link_to '削除', "notes/#{t.id}", data: {turbo_method: :delete} %>
+            <%= link_to '表示', "notes/#{t.id}" %>
         </li>
     <% end %>
 </ul>
