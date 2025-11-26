@@ -1,8 +1,7 @@
 <h1>ユーザー新規登録</h1>
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
+<% if flash[:alert] %>
+  <%= flash[:alert] %><br>
 <% end %>
-
 <%= form_with model: @user do |form| %>
   <p>
     <%= form.label :email, "メールアドレス" %>
@@ -19,4 +18,4 @@
   <%= form.submit "登録" %>
 <% end %>
 <br>
-<%= link_to "キャンセル" %> <!-- FIXIT: リンク先の設定 -->
+<%= link_to "キャンセル", login_form_path %>

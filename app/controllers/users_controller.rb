@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   def index
     @users = User.all
   end
@@ -12,17 +12,17 @@ class UserController < ApplicationController
       password: params[:user][:password],
       password_confirmation: params[:user][:password_confirmation])
     if User.find_by(email: params[:user][:email]) != nil
-      flash[:notice] = "※このメールアドレスは登録済みです"
-      redirect_to top_main_path #FIXIT: redirect先の設定！！
+      flash[:alert] = "※ このメールアドレスは登録済みです"
+      redirect_to new_user_path
     else
       u.save
-      redirect_to top_main_path #FIXIT:redirect先の設定！！
+      redirect_to notes_path
     end
   end
   
   def destroy
     @user = User.find(params[:id]).destroy
-    redirect_to top_main_path #FIXIT:redirect先の設定！！
+    redirect_to top_main_path
   end
 
 end
