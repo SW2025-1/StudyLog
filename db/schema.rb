@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_19_080500) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_03_070024) do
   create_table "logs", force: :cascade do |t|
     t.integer "user_id"
-    t.string "subject"
     t.integer "studytime"
     t.text "memo"
     t.date "studied_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "subject_id"
   end
 
   create_table "note_tags", force: :cascade do |t|
@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_080500) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "subject_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -45,7 +46,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_19_080500) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "password_digest"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

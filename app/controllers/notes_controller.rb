@@ -10,13 +10,13 @@ class NotesController < ApplicationController
   def create
     note = Note.new(user_id: nil, title: params[:note][:title], content: params[:note][:content])
     note.save
-    redirect_to '/'
+    redirect_to notes_path
   end
   
   def destroy
     note = Note.find(params[:id])
     note.destroy
-    redirect_to '/'
+    redirect_to notes_path
   end
   
   def show
