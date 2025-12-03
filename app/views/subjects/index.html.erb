@@ -1,6 +1,10 @@
 <h1>科目一覧</h1>
-<ul>
-   - <% @subjects.each do |subject| %> - 
-   <li><%= subject.subject_name %></li>
-   - <% end %>
+<%= link_to "新規追加", new_subject_path %>
+<ul> - <% @subjects.each do |subject| %> - 
+  <li><%= subject.subject_name %>
+  - <%= link_to "編集", edit_subject_path(subject) %>
+  - <%= link_to "削除", subject_path(subject), 
+      data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %> - 
+  </li>
+  - <% end %>
 </ul>
