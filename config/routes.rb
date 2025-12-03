@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :notes
   resources :subjects
   resources :tags
+  resources :logs
   
   get "top/main"
   post 'login', to: 'top#login', as: :login
