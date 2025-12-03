@@ -22,7 +22,22 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <div class="wrapper">
+    <% if content_for?(:sidebar) %>
+      <aside>
+        <%= yield :sidebar %>
+      </aside>
+    <% elsif defined?(@show_sidebar) && @show_sidebar %>
+      <aside>
+        <%= render "shared/sidebar" %>
+      </aside>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+  </div>
+</body>
+
 </html>

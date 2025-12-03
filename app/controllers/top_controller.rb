@@ -1,4 +1,7 @@
 class TopController < ApplicationController
+  before_action :enable_sidebar
+  #サイドバーを表示したい場合に記述
+  
   def login_form
   end
   

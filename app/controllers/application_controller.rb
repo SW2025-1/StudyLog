@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     session[:c] = session[:c].to_i + 1
     render plain: session[:c]
   end
+  
+  def enable_sidebar
+    @show_sidebar = true
+  end
 end
