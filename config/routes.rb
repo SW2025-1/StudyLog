@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'top#main'
   resources :users
   resources :notes
+  resources :logs
   
   get "top/main"
   post 'login', to: 'top#login', as: :login

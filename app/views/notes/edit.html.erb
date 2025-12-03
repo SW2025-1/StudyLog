@@ -1,0 +1,15 @@
+<h1>ノート編集ページ</h1>
+
+<%= form_with model: @note do |f| %>
+  <p>
+      <%= f.label :title, 'タイトル：' %>
+      <%= f.text_field :title %>
+  </p>
+  <p>
+      <%= f.label :content, '本文：' %>
+      <%= f.text_area :content %>
+  </p>
+  
+  <%= f.submit '変更' %>
+<% end %>
+<%= link_to 'キャンセル', notes_path %>
