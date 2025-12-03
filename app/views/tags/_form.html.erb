@@ -1,0 +1,8 @@
+<%= form_with model: @tag do |f| %>
+  <div>
+     - <%= f.label :tagname, "タグ名" %> - <%= f.text_field :tagname %>
+  </div>
+  <div>
+     - <%= f.submit %>
+  </div>
+<% end %>
