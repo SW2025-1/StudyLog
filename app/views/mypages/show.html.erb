@@ -17,3 +17,9 @@
     <% end %>
   </tbody>
 </table>
+
+<h2>月ごとの勉強時間</h2>
+
+<%= column_chart @studytime_by_month,
+               xtitle: "月",
+               ytitle: "勉強時間（分）" %>

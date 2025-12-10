@@ -64,3 +64,6 @@ end
 
 # マークダウン形式のテキストをHTMｌ形式に変換するためのgem
 gem 'redcarpet'
+
+gem "chartkick"
+gem "groupdate"
