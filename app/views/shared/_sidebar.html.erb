@@ -1,4 +1,9 @@
 <nav class="sidebar">
+  <% if session[:login_uid] %>
+    <h3>ログイン中のID：<%= session[:login_uid] %></h3>
+  <% else %>
+    <h3>ログインしていません</h3>
+  <% end %>
   <ul>
     <li><%= link_to "マイ教材一覧", subjects_path %></li>
     <li><%= link_to "タグ一覧", tags_path %></li>

@@ -1,0 +1,24 @@
+<%= form_with model: @log do |f| %>
+  <div><%= f.label :subject_id, "教材" %>
+  <%= f.collection_select :subject_id,
+                          Subject.all,
+                          :id,
+                          :subject_name,
+                          { include_blank: "教材を選択してください" } %>
+  </div>
+
+  <div>
+      <%= f.label :studied_on, '勉強した日付：' %>
+      <%= f.date_field :studied_on %>
+  </div>
+  <div>
+      <%= f.label :studytime, '勉強時間：' %>
+      <%= f.number_field :studytime %>
+  </div>
+  <div>
+      <%= f.label :memo, 'メモ：' %>
+      <%= f.text_area :memo %>
+  </div>
+  
+  <%= f.submit '保存' %>
+<% end %>

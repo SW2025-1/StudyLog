@@ -1,15 +1,16 @@
 <h2>ログ一覧表示</h2>
-<p><%= link_to 'ログ新規追加', 'logs/new' %> </p>
+<p><%= link_to 'ログ新規追加', new_log_path %></p>
 <ul>
-    <% @log.each do |t| %>
+    <% @logs.each do |log| %>
         <li>
-            日付：<%= t.studied_on %><br>
-            教材：<strong><%= t.subject_id %></strong><br>
-            勉強時間：<strong><%= t.studytime %></strong><br>
-            (作成日：<%= t.created_at %>)<br>
-            <%= link_to '削除', "logs/#{t.id}", data: {turbo_method: :delete} %>
-            <%= link_to '表示', "logs/#{t.id}" %>
-            <%= link_to '編集', "logs/#{t.id}/edit" %>
+            日付：<%= log.studied_on %><br>
+            教材：<strong><%= log.subject&.subject_name %></strong><br>
+            勉強時間：<strong><%= log.studytime %></strong><br>
+            (作成日：<%= log.created_at %>)<br>
+            <%= link_to '削除', log_path(log), data: { turbo_method: :delete } %>
+            <%= link_to '表示', log_path(log) %>
+            <%= link_to '編集', edit_log_path(log) %>
         </li>
     <% end %>
 </ul>
+

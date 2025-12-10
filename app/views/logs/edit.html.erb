@@ -1,25 +1,3 @@
 <h1>ログ編集ページ</h1>
-
-<%= form_with model: @log do |f| %>
-  <!-- ここはSubjectとの依存関係を作ったら実装したい -->
-  <!-- それまではコントローラ側で仮のsubject_idを入力するようにする -->
-  <!--<p>-->
-      <%#= f.label :subject_id, '教材：' %>
-      <%#= f.select :subject_id, [["数学", 1], ["英語", 2], ["国語", 3]] %>
-  <!--</p>-->
-  <p>
-      <%= f.label :studied_on, '勉強した日付：' %>
-      <%= f.date_field :studied_on %>
-  </p>
-  <p>
-      <%= f.label :studytime, '勉強時間：' %>
-      <%= f.number_field :studytime %>
-  </p>
-  <p>
-      <%= f.label :memo, 'メモ：' %>
-      <%= f.text_area :memo %>
-  </p>
-  
-  <%= f.submit '変更' %>
-<% end %>
+<%= render "form" %>
 <%= link_to 'キャンセル', logs_path %>

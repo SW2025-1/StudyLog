@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
   def index
-    @log = Log.all
+    @logs = Log.includes(:subject).all
   end
 
   def new
@@ -8,14 +8,17 @@ class LogsController < ApplicationController
   end
   
   def create
-    logs = Log.new(user_id: 1, subject_id: 1, studytime: params[:log][:studytime], memo: params[:log][:memo], studied_on: params[:log][:studied_on])
-    logs.save
-    redirect_to logs_path
+    @log = current_user.logs.new(log_params)
+    if @log.save
+      redirect_to logs_path
+    else
+      render :new
+    end
   end
 
   def destroy
-    logs = Log.find(params[:id])
-    logs.destroy
+    @log = Log.find(params[:id])
+    @log.destroy
     redirect_to logs_path
   end
   
@@ -26,4 +29,10 @@ class LogsController < ApplicationController
   def edit
     @log = Log.find(params[:id])
   end
+  
+  private
+  def log_params
+    params.require(:log).permit(:subject_id, :studytime, :memo, :studied_on)
+  end
+
 end
