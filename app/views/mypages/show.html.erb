@@ -1,0 +1,19 @@
+<h1>マイページ</h1>
+
+<h2>教材ごとの合計勉強時間</h2>
+<table>
+  <thead>
+    <tr>
+      <th>教材</th>
+      <th>合計勉強時間（分）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @studytime_by_subject.each do |(subject_id, subject_name), total_time| %>
+      <tr>
+        <td><%= subject_name %></td>
+        <td><%= total_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
