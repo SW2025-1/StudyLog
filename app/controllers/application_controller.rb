@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
   def enable_sidebar
     @show_sidebar = true
   end
+  helper_method :current_user
+  private
+    def current_user
+      if session[:login_uid]
+        User.find_by(email: session[:login_uid])
+      end
+    end
 end
