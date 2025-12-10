@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  before_action :enable_sidebar
+  
   def index
     @notes = Note.all
   end

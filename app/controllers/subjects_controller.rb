@@ -1,4 +1,6 @@
 class SubjectsController < ApplicationController
+  before_action :enable_sidebar
+  
   def index
     @subjects = Subject.all
   end

@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  before_action :enable_sidebar
+  
   def index
     @tags = Tag.all
   end

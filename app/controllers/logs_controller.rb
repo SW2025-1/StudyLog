@@ -1,4 +1,6 @@
 class LogsController < ApplicationController
+  before_action :enable_sidebar
+  
   def index
     @logs = Log.includes(:subject).all
   end

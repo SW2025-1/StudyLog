@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :enable_sidebar
+  
   def index
     @users = User.all
   end

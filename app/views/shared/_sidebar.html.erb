@@ -5,7 +5,10 @@
     <h3>ログインしていません</h3>
   <% end %>
   <ul>
-    <li><%= link_to "マイ教材一覧", subjects_path %></li>
-    <li><%= link_to "タグ一覧", tags_path %></li>
+    <li><%= link_to 'Login', login_form_path %></li>
+    <li><%= link_to 'ノート一覧', notes_path %></li>
+    <li><%= link_to 'ログ一覧', logs_path %></li>
+    <li><%= link_to 'マイ教材一覧', subjects_path %></li>
+    <li><%= link_to 'タグ一覧', tags_path %></li>
   </ul>
 </nav>
