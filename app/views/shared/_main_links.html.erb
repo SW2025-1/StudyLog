@@ -1,5 +1,8 @@
   <ul>
-    <li><%= link_to 'マイページ', mypage_path %></li>
+    <% if session[:login_uid] %>
+      <li><%= link_to 'マイページ', mypage_path %></li>
+    <% end %>
+    
     <li><%= link_to 'Login', login_form_path %></li>
     <li><%= link_to 'ノート一覧', notes_path %></li>
     <li><%= link_to 'ログ一覧', logs_path %></li>
