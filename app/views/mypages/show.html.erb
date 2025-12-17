@@ -23,3 +23,21 @@
 <%= column_chart @studytime_by_month,
                xtitle: "月",
                ytitle: "勉強時間（分）" %>
+               
+<h2>直近の学習ログ</h2>
+
+<% if @recent_logs.present? %>
+  <ul>
+    <% @recent_logs.each do |log| %>
+      <li>
+        日付: <%= log.studied_on %><br>
+        教材: <%= log.subject&.subject_name %><br>
+        勉強時間: <%= log.studytime %> 分<br>
+      </li>
+      <br>
+    <% end %>
+  </ul>
+<% else %>
+  <p>まだ学習ログが登録されていません。</p>
+<% end %>
+

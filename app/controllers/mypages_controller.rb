@@ -14,5 +14,9 @@ class MypagesController < ApplicationController
       @user.logs
            .group_by_month(:studied_on, format: "%Y-%m")  # "2025-12" のようなキー
            .sum(:studytime)
+           
+    count_of_logs = 2
+    @recent_logs = @user.logs.order(studied_on: :desc).limit(count_of_logs) #日付的に近いログを指定個数表示
+    
   end
 end
