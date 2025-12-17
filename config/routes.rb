@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get "top/main"
   post 'login', to: 'top#login', as: :login
   get "login_form", to: "top#login_form", as: :login_form
+  delete 'logout', to: 'top#logout', as: :logout
 end
