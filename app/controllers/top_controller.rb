@@ -1,5 +1,6 @@
 class TopController < ApplicationController
-  before_action :enable_sidebar
+  # before_action :enable_sidebar
+  skip_before_action :require_login
   #サイドバーを表示したい場合に記述
   
   def login_form

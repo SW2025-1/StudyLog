@@ -1,9 +1,9 @@
   <ul>
-    <% if session[:login_uid] %>
+    <% if logged_in? %>
       <li><%= link_to 'マイページ', mypage_path %></li>
     <% end %>
     
-    <% if session[:login_uid] %>
+    <% if logged_in? %>
       <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %></li>
     <% else %>
       <li><%= link_to 'Login', login_form_path %></li>
