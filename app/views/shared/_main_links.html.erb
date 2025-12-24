@@ -5,12 +5,12 @@
     
     <% if logged_in? %>
       <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %></li>
+      <li><%= link_to 'ノート一覧', notes_path %></li>
+      <li><%= link_to 'ログ一覧', logs_path %></li>
+      <li><%= link_to 'マイ教材一覧', subjects_path %></li>
+      <li><%= link_to 'タグ一覧', tags_path %></li>
     <% else %>
       <li><%= link_to 'Login', login_form_path %></li>
     <% end %>
-    
-    <li><%= link_to 'ノート一覧', notes_path %></li>
-    <li><%= link_to 'ログ一覧', logs_path %></li>
-    <li><%= link_to 'マイ教材一覧', subjects_path %></li>
-    <li><%= link_to 'タグ一覧', tags_path %></li>
+
   </ul>
