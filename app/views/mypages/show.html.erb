@@ -1,43 +1,48 @@
-<h1>マイページ</h1>
+<h1>ダッシュボード</h1>
 
-<h2>教材ごとの合計勉強時間</h2>
-<table>
-  <thead>
-    <tr>
-      <th>教材</th>
-      <th>合計勉強時間（分）</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @studytime_by_subject.each do |(subject_id, subject_name), total_time| %>
+<div class="card">
+  <h2>教材ごとの合計勉強時間</h2>
+  <table>
+    <thead>
       <tr>
-        <td><%= subject_name %></td>
-        <td><%= total_time %></td>
+        <th>教材</th>
+        <th>合計勉強時間（分）</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @studytime_by_subject.each do |(subject_id, subject_name), total_time| %>
+        <tr>
+          <td><%= subject_name %></td>
+          <td><%= total_time %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<h2>月ごとの勉強時間</h2>
+<div class="card">
+  <h2>月ごとの勉強時間</h2>
+  
+  <%= column_chart @studytime_by_month,
+                 xtitle: "月",
+                 ytitle: "勉強時間（分）" %>
+</div>
 
-<%= column_chart @studytime_by_month,
-               xtitle: "月",
-               ytitle: "勉強時間（分）" %>
-               
-<h2>直近の学習ログ</h2>
-
-<% if @recent_logs.present? %>
-  <ul>
-    <% @recent_logs.each do |log| %>
-      <li>
-        日付: <%= log.studied_on %><br>
-        教材: <%= log.subject&.subject_name %><br>
-        勉強時間: <%= log.studytime %> 分<br>
-      </li>
-      <br>
-    <% end %>
-  </ul>
-<% else %>
-  <p>まだ学習ログが登録されていません。</p>
-<% end %>
-
+<div class="card">
+  <h2>直近の学習ログ</h2>
+  
+  <% if @recent_logs.present? %>
+    
+      <% @recent_logs.each do |log| %>
+        <div class="note-card">
+          <%= log.studied_on %><br>
+          <%= log.subject&.subject_name %><br>
+          <%= log.studytime %> 分
+        </div>
+        
+      <% end %>
+    
+  <% else %>
+    <p>まだ学習ログが登録されていません。</p>
+  <% end %>
+</div>
