@@ -34,7 +34,7 @@
   <% if @recent_logs.present? %>
     
       <% @recent_logs.each do |log| %>
-        <div class="note-card">
+        <div class="log-card log-card--orange">
           <%= log.studied_on %><br>
           <%= log.subject&.subject_name %><br>
           <%= log.studytime %> 分

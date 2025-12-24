@@ -1,16 +1,16 @@
-<h2>ログ一覧表示</h2>
-<p><%= link_to 'ログ新規追加', new_log_path %></p>
-<ul>
-    <% @logs.each do |log| %>
-        <li>
-            日付：<%= log.studied_on %><br>
-            教材：<strong><%= log.subject&.subject_name %></strong><br>
-            勉強時間：<strong><%= log.studytime %></strong><br>
-            (作成日：<%= log.created_at %>)<br>
-            <%= link_to '削除', log_path(log), data: { turbo_method: :delete } %>
-            <%= link_to '表示', log_path(log) %>
-            <%= link_to '編集', edit_log_path(log) %>
-        </li>
-    <% end %>
-</ul>
+<h1>ログ一覧</h1>
+<p><%= link_to '＋ 新規追加', new_log_path, class: "btn btn-new" %></p>
+
+<% @logs.each do |log| %>
+    <div class="log-card">
+        日付：<%= log.studied_on %><br>
+        教材：<strong><%= log.subject&.subject_name %></strong><br>
+        勉強時間：<strong><%= log.studytime %> 分</strong><br>
+        (作成日：<%= log.created_at %>)<br>
+        <%= link_to '削除', log_path(log), data: { turbo_method: :delete } %>
+        <%= link_to '表示', log_path(log) %>
+        <%= link_to '編集', edit_log_path(log) %>
+    </div>
+<% end %>
+
 
