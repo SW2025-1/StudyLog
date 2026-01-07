@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :enable_sidebar
   
   def index
-    @notes = Note.all
+    @notes = Note.where(user_id: current_user.id)
   end
   
   def new
@@ -11,9 +11,12 @@ class NotesController < ApplicationController
   
   def create
     @note = Note.new(note_params)
-    @note.user_id = nil
-    @note.save
-    redirect_to notes_path
+    @note.user_id = current_user.id
+    if @note.save
+      redirect_to notes_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
   
   def destroy
