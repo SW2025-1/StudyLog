@@ -16,6 +16,19 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    
+     <!--コードハイライトのためのCSS読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    <script>
+      document.addEventListener("turbo:load", function() {
+        // Action Textのコードブロック(<pre>タグ)をすべて探す
+        document.querySelectorAll("pre").forEach(function(block) {
+          // ハイライトを適用する
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>

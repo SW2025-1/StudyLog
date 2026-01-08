@@ -4,5 +4,5 @@ class Note < ApplicationRecord
   
   has_many :note_tags
   has_many :attached_tags, through: :note_tags, source: :tag
-  has_rich_text :body
+  has_rich_text :content
 end
