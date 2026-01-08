@@ -3,8 +3,20 @@
   <%= @note.title %>
 </h1>
 
-<div>
-  <%= @note.content %>
-</div>
+<% if @note.images.attached? %>
+  <div>
+    <p>【手描きのノート】</p>
+    <% @note.images.each do |image| %>
+      <%= image_tag image, style: "max-width: 100%; height: auto;" %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @note.content.body.present? %>
+  <div>
+    <p>【ノート】</p>
+    <%= @note.content %>
+  </div>
+<% end %>
 
 <%= link_to '戻る', notes_path %>
