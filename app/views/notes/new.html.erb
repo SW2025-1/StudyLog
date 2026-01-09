@@ -5,15 +5,23 @@
       <%= f.label :title, 'タイトル：' %>
       <%= f.text_field :title %>
   </p>
-  <p>
-      <%= f.label :images, '手描きノートの写真(複数選択可)' %>
-      <%= f.file_field :images, multiple: true, accept: 'image/jpeg,image/gif,image/png', id: "note_images"%>
-      <br>
-  </p>
-  <!--プレビューする領域-->
-  <div id="image-previews">
-    
+  
+  <div data-controller="image-preview">
+    <p>
+        <%= f.label :images, '手描きノートの写真(複数選択可)' %>
+        <%= f.file_field :images, multiple: true, accept: 'image/jpeg,image/gif,image/png', 
+        data: {
+          image_preview_target: "input",
+          action: "change->image-preview#preview"
+        } %>
+        <br>
+    </p>
+    <!--プレビュー表示エリア-->
+    <div data-image-preview-target="preview">
+      
+    </div>
   </div>
+  
   <p>
       <%= f.label :content, '本文：' %>
       <%= f.rich_text_area :content %>
@@ -22,37 +30,3 @@
   <%= f.submit '保存' %>
 <% end %>
 <%= link_to 'キャンセル', notes_path %>
-
-
-
-<!--画像プレビュー機能-->
-<script>
-  
-  document.addEventListener('turbo:load', () => {
-    const input = document.getElementById('note_images');
-    const previewBox = document.getElementById('image-previews');
-  
-    if (!input || !previewBox) return;
-  
-    input.addEventListener('change', function(event) {
-      previewBox.innerHTML = '';
-      const files = event.target.files;
-  
-      Array.from(files).forEach(file => {
-        if (!file.type.match('image.*')) return;
-        
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const img = document.createElement('img');
-          img.src = e.target.result;
-          img.style.height = '150px';
-          img.style.objectFit = 'contain';
-          img.style.border = '1px solid #ccc';
-          img.style.marginRight = '10px';
-          previewBox.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-  });
-</script>

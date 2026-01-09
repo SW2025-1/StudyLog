@@ -4,13 +4,32 @@
 </h1>
 
 <% if @note.images.attached? %>
-  <div>
+  <div data-controller="image-modal">
     <p>【手描きのノート】</p>
     <% @note.images.each do |image| %>
-      <%= image_tag image, style: "max-width: 100%; height: auto;" %>
+      <%= image_tag image, style: "max-width: 100%; height: 150px; margin-right: 10px; border: 1px solid #ccc; cursor: pointer;",
+      data: {
+        action: "click->image-modal#open"
+      }
+      %>
     <% end %>
+    
+    <!--拡大表示用のモーダル-->
+    <div style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;"
+         data-image-modal-target="modal">
+      
+      <img src="" style="max-width: 90%; max-height: 90%; border: 2px solid white;"
+           data-image-modal-target="fullImage">
+      
+      <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer;"
+           data-action="click->image-modal#close">
+        &times;
+      </div>
+    </div>
+    <!------------------------>
   </div>
 <% end %>
+
 
 <% if @note.content.body.present? %>
   <div>
