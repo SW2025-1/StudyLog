@@ -5,11 +5,11 @@ export default class extends Controller {
   
   open(event) {
       const clickedImage = event.currentTarget.src
-      const modal = this.fullImageTarget
-      const modalImg = this.modalTarget
+      const modalImg = this.fullImageTarget
+      const modal = this.modalTarget
       
-      modal.src = clickedImage
-      modalImg.style.display = "flex"
+      modalImg.src = clickedImage
+      modal.style.display = "flex"
   }
   
   close() {
