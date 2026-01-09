@@ -1,0 +1,29 @@
+<%= form_with model: @note do |f| %>
+  <p>
+      <%= f.label :title, 'タイトル：' %>
+      <%= f.text_field :title %>
+  </p>
+  
+  <div data-controller="image-preview">
+    <p>
+        <%= f.label :images, '手描きノートの写真(複数選択可)' %>
+        <%= f.file_field :images, multiple: true, accept: 'image/jpeg,image/gif,image/png', 
+        data: {
+          image_preview_target: "input",
+          action: "change->image-preview#preview"
+        } %>
+        <br>
+    </p>
+    <!--プレビュー表示エリア-->
+    <div data-image-preview-target="preview">
+      
+    </div>
+  </div>
+  
+  <p>
+      <%= f.label :content, '本文：' %>
+      <%= f.rich_text_area :content %>
+  </p>
+  
+  <%= f.submit @note.new_record? ? "保存" : "更新" %>
+<% end %>
