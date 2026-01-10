@@ -2,6 +2,7 @@
   <strong>タイトル：</strong>
   <%= @note.title %>
 </h1>
+<p>教材：<%= @note.subject.subject_name %></p>
 
 <% if @note.images.attached? %>
   <div data-controller="image-modal">

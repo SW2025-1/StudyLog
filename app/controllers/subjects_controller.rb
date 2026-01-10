@@ -11,6 +11,7 @@ class SubjectsController < ApplicationController
 
   def create
     subj = Subject.new(subject_params)
+    subj.user_id = current_user.id
     if subj.save
       redirect_to subjects_path
     else
