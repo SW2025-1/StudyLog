@@ -2,7 +2,28 @@
   <strong>タイトル：</strong>
   <%= @note.title %>
 </h1>
-<p>教材：<%= @note.subject.subject_name %></p>
+<div>
+  <% if @note.subject.present? %>
+    <p>教材：<%= @note.subject.subject_name %></p>
+  <% else %>
+    <p>教材はありません。</p>
+  <% end %>
+</div>
+
+<div>
+  <% if @note.attached_tags.any? %>
+    <p style="margin-bottom: 0px;">タグ：</p>
+    <div>
+      <% @note.attached_tags.each do |tag| %>
+        <span style="display: inline-block; background-color: #ffc04a; padding: 4px 10px; border-radius: 16px; font-size: 0.9em; margin-right: 5px; margin-bottom: 5px;">
+          #<%= tag.tagname %>
+        </span>
+      <% end %>
+    </div>
+  <% else %>
+    <p>タグはありません。</p>
+  <% end %>
+</div>
 
 <% if @note.images.attached? %>
   <div data-controller="image-modal">

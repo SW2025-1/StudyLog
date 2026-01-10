@@ -1,11 +1,12 @@
 class Note < ApplicationRecord
   belongs_to :user
-  belongs_to :subject
+  belongs_to :subject, optional: true
   
-  has_many :note_tags
+  has_many :note_tags, dependent: :destroy
   has_many :attached_tags, through: :note_tags, source: :tag
   
   has_many_attached :images
   
   has_rich_text :content
+  
 end

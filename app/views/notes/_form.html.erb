@@ -12,6 +12,21 @@
                           { include_blank: "教材を選択してください" } %>
   </div>
   
+  <div>
+    <%= f.label :attached_tag_ids, "タグを選択" %>
+    <div>
+      <%= f.collection_check_boxes :attached_tag_ids,
+                                   current_user.tags,
+                                   :id,
+                                   :tagname do |b| %>
+       <div>
+         <%= b.check_box(class: "form-check-input") %>
+         <%= b.label(class: "form-check-label") {b.text } %>
+       </div>
+      <% end %>
+    </div>
+  </div>
+  
   <div data-controller="image-preview">
     <p>
         <%= f.label :images, '手描きノートの写真(複数選択可)' %>
