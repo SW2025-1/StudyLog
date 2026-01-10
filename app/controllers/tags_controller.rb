@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_action :enable_sidebar
   
   def index
-    @tags = Tag.all
+    @tags = current_user.tags
   end
 
   def new
@@ -11,6 +11,7 @@ class TagsController < ApplicationController
 
   def create
     tag = Tag.new(tag_params)
+    tag.user_id = current_user.id
     if tag.save
       redirect_to tags_path
     else
@@ -23,7 +24,7 @@ class TagsController < ApplicationController
   end
 
   def update
-    @tag = Subject.find(params[:id])
+    @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
       redirect_to tags_path, notice: "タグを更新しました"
     else
