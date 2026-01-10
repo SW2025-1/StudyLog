@@ -12,6 +12,8 @@
                           { include_blank: "教材を選択してください" } %>
   </div>
   
+  <br>
+  
   <div>
     <%= f.label :attached_tag_ids, "タグを選択" %>
     <div>
@@ -27,20 +29,37 @@
     </div>
   </div>
   
+  <br>
+  
   <div data-controller="image-preview">
-    <p>
+    <div>
         <%= f.label :images, '手描きノートの写真(複数選択可)' %>
+        
         <%= f.file_field :images, multiple: true, accept: 'image/jpeg,image/gif,image/png', 
-        data: {
-          image_preview_target: "input",
-          action: "change->image-preview#preview"
-        } %>
+            data: {
+              image_preview_target: "input",
+              action: "change->image-preview#preview"}
+        %>
+        <!--プレビュー表示エリア-->
+        <div data-image-preview-target="preview">
+          
+        </div>
         <br>
-    </p>
-    <!--プレビュー表示エリア-->
-    <div data-image-preview-target="preview">
-      
+        <% if @note.images.attached? %>
+          <!-- 既存画像の保存用 -->
+          <% @note.images.each do |image| %>
+            <%= f.hidden_field :images, multiple: true, value: image.signed_id %>
+          <% end %>
+          
+          <div>
+            <p>現在保存されている画像：</p>
+            <% @note.images.each do |image| %>
+              <%= image_tag image, width: 300 %>
+            <% end %>
+          </div>
+        <% end %>
     </div>
+    
   </div>
   
   <p>
