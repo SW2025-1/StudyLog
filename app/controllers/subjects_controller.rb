@@ -2,7 +2,7 @@ class SubjectsController < ApplicationController
   before_action :enable_sidebar
   
   def index
-    @subjects = Subject.all
+    @subjects = Subject.where(user_id: current_user.id)
   end
 
   def new

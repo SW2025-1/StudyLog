@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :enable_sidebar
   
   def index
-    @notes = Note.where(user_id: current_user.id)
+    @notes = current_user.notes
   end
   
   def new
