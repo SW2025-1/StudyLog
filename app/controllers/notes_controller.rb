@@ -35,6 +35,12 @@ class NotesController < ApplicationController
   
   def update
     @note = Note.find(params[:id])
+    if params[:note][:image_ids]
+      params[:note][:image_ids].each do |image_id|
+        image = @note.images.find(image_id)
+        image.purge
+      end
+    end
     if @note.update(note_params)
       redirect_to notes_path
     else

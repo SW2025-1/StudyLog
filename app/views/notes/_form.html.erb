@@ -52,9 +52,10 @@
           <% end %>
           
           <div>
-            <p>現在保存されている画像：</p>
+            <p>現在保存されている画像（削除するものはチェックしてください）</p>
             <% @note.images.each do |image| %>
-              <%= image_tag image, width: 300 %>
+              <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
+              <%= image_tag image, height: 150, style: "max-width: 100%; object-fit: contain;" %>
             <% end %>
           </div>
         <% end %>
