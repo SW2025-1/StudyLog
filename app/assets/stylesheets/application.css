@@ -151,6 +151,10 @@ body {
   border-left-color: #4a6ff2;    /* 別の色 */
 }
 
+.log-card--navy {
+  border-left-color: #47266e;
+}
+
 .btn {
   display: inline-block;
   padding: 6px 12px;
@@ -172,7 +176,7 @@ body {
   background-color: #c53030;     /* ほんの少し暗く */
 }
 
-.btn-new {
+.btn-log-new {
   background-color: #47266e;
   color: #fff;
 }
@@ -189,4 +193,19 @@ body {
 
 .cancel :hover {
   background-color: #c53030;
+}
+
+.btn-note-new {
+    background-color: #f4a623;
+    color: #fff;
+}
+
+.tag-area {
+    display: inline-block; 
+    background-color: #ffc04a; 
+    padding: 4px 10px; 
+    border-radius: 16px; 
+    font-size: 0.9em; 
+    margin-right: 5px; 
+    margin-bottom: 5px;
 }

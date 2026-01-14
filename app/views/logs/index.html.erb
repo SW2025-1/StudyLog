@@ -1,8 +1,8 @@
 <h1>ログ一覧</h1>
-<p><%= link_to '＋ 新規追加', new_log_path, class: "btn btn-new" %></p>
+<p><%= link_to '＋ 新規追加', new_log_path, class: "btn btn-log-new" %></p>
 
 <% @logs.each do |log| %>
-    <div class="log-card">
+    <div class="log-card log-card--navy">
         日付：<%= log.studied_on %><br>
         教材：<strong><%= log.subject&.subject_name %></strong><br>
         勉強時間：<strong><%= log.studytime %> 分</strong><br>
