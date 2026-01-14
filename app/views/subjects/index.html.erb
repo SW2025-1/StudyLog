@@ -3,7 +3,7 @@
 
 <div class="card">
   <% @subjects.each do |subject| %>
-  <h3><%= subject.subject_name %></h3>
+  <strong><%= subject.subject_name %></strong><br>
   <%= link_to "編集", edit_subject_path(subject) %>
   <%= link_to "削除", subject_path(subject), 
       data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>

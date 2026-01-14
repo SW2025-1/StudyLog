@@ -1,8 +1,11 @@
 <%= form_with model: @subject do |f| %>
   <div>
-     - <%= f.label :subject_name, "科目名" %> - <%= f.text_field :subject_name %>
+     <strong><%= f.label :subject_name, "科目名" %></strong>
+     <%= f.text_field :subject_name %>
   </div>
-  <div>
-     - <%= f.submit %>
-  </div>
+
+  <%= f.submit class: "btn btn-submit" %>
+  
+  <%= link_to "キャンセル", subjects_path, class: "cancel" %>
+
 <% end %>

@@ -1,9 +1,9 @@
 <%= form_with model: @tag do |f| %>
   <div>
-     - <%= f.label :tagname, "タグ名" %>
-     - <%= f.text_field :tagname %>
+     <strong><%= f.label :tagname, "タグ名" %></strong>
+     <%= f.text_field :tagname %>
   </div>
-  <div>
-     - <%= f.submit %>
-  </div>
+    <%= f.submit class: "btn btn-submit" %>
+     
+    <%= link_to "キャンセル", tags_path, class: "cancel" %>
 <% end %>

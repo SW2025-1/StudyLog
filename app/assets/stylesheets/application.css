@@ -157,6 +157,7 @@ body {
   border-radius: 7px;
   text-decoration: none;
   cursor: pointer;
+  margin: 10px 0px;
 }
 
 /* 共通ボタンの色など調整したければここ */
@@ -174,4 +175,18 @@ body {
 .btn-new {
   background-color: #47266e;
   color: #fff;
+}
+
+.btn-submit {
+  background-color: #402060;
+  color: #fff;
+}
+
+.cancel {
+  color: #777;
+  margin-left: 20px;
+}
+
+.cancel :hover {
+  background-color: #c53030;
 }

@@ -1,10 +1,11 @@
 <h1>タグ一覧</h1>
 <%= link_to "＋ 新規追加", new_tag_path, class: "btn btn-new" %>
-<ul> - <% @tags.each do |tag| %> - 
-  <li><%= tag.tagname %>
-  - <%= link_to "編集", edit_tag_path(tag) %>
-  - <%= link_to "削除", tag_path(tag), 
-      data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %> - 
-  </li>
-  - <% end %>
-</ul>
+
+<div class="card">
+  <% @tags.each do |tag| %>
+    <strong><%= tag.tagname %></strong><br>
+    <%= link_to "編集", edit_tag_path(tag) %>
+    <%= link_to "削除", tag_path(tag), 
+      data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+  <% end %>
+</div>
