@@ -1,14 +1,24 @@
-<h1>マイページ</h1>
-<h2>ノート一覧表示</h2>
-<p><%= link_to 'ノート新規追加', 'notes/new' %> </p>
-<ul>
-    <% @notes.each do |t| %>
-        <li>
-            <strong><%= t.title %></strong>&nbsp;
-            (作成日：<%= t.created_at %>)
-            <%= link_to '削除', "notes/#{t.id}", data: {turbo_method: :delete, turbo_confirm: '削除してよろしいですか?'} %>
-            <%= link_to '表示', "notes/#{t.id}" %>
-            <%= link_to '編集', "notes/#{t.id}/edit" %>
-        </li>
-    <% end %>
-</ul>
+<div class="title">
+    <h1>ノート一覧表示</h1>
+</div>
+
+<p><%= link_to '＋ 新規追加', new_note_path, class: "btn btn-note-new" %> </p>
+
+<% @notes.each do |t| %>
+    <div class="log-card log-card--orange">
+        <strong><%= t.title %></strong>&nbsp;<br>
+        <% if t.attached_tags.any? %>
+            <div>
+              <% t.attached_tags.each do |tag| %>
+                <span class="tag-area">
+                  #<%= tag.tagname %>
+                </span>
+              <% end %>
+            </div>
+        <% end %>
+        (作成日：<%= t.created_at %>)<br>
+        <%= link_to '削除', "notes/#{t.id}", data: {turbo_method: :delete, turbo_confirm: '削除してよろしいですか?'} %>
+        <%= link_to '表示', "notes/#{t.id}" %>
+        <%= link_to '編集', "notes/#{t.id}/edit" %>
+    </div>
+<% end %>
