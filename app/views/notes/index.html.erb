@@ -1,6 +1,6 @@
 <h1>マイページ</h1>
 <h2>ノート一覧表示</h2>
-<p><%= link_to 'ノート新規追加', 'notes/new' %> </p>
+<p><%= link_to 'ノート新規追加', 'notes/new', class: "btn btn-new" %> </p>
 <ul>
     <% @notes.each do |t| %>
         <li>
